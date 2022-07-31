@@ -1,0 +1,9 @@
+enabledGroups:
+  - 584074006
+  - 666666666
+
+expiresTime: 60
+minLevel: 10
+bind-succeed-commands:
+  - 'say %player% 绑定成功'
+  - ''

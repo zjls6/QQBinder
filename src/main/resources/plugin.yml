@@ -1,0 +1,11 @@
+name: QQBinder
+version: '${project.version}'
+main: cc.zjlsx.qqbinder.Main
+softdepend: [ AmazingBot ]
+authors: [ zjls ]
+description: QQBinder
+commands:
+  qqbind:
+    aliases: [qqbd]
+  qqbinder:
+    aliases: [qqbr]
