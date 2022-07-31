@@ -1,9 +1,11 @@
 enabledGroups:
-  - 584074006
-  - 666666666
+  - 974519032
+  - 833707295
 
 expiresTime: 60
 minLevel: 10
+maxUnbanPerDay: 2
+
 bind-succeed-commands:
-  - 'say %player% 绑定成功'
+  - 'lp user %player% parent add qqbind'
   - ''

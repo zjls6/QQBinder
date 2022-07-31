@@ -2,6 +2,7 @@ package cc.zjlsx.qqbinder.data;
 
 import cc.zjlsx.qqbinder.data.base.BaseYamlConfigProvider;
 import cc.zjlsx.qqbinder.enums.Messages;
+import cc.zjlsx.qqbinder.model.GamePlayer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.List;
 public class ConfigManager extends BaseYamlConfigProvider {
     private long expiresTime;
     private long minLevel;
+    private int maxUnbanPerDay;
     private List<String> bindSucceedCommands = new ArrayList<>();
     private List<Long> enabledGroups = new ArrayList<>();
 
@@ -26,6 +28,7 @@ public class ConfigManager extends BaseYamlConfigProvider {
         loadMessages();
         expiresTime = config.getLong("expiresTime");
         minLevel = config.getLong("minLevel");
+        maxUnbanPerDay = config.getInt("maxUnbanPerDay");
         bindSucceedCommands = config.getStringList("bind-succeed-commands");
         enabledGroups = config.getLongList("enabledGroups");
     }
@@ -61,5 +64,9 @@ public class ConfigManager extends BaseYamlConfigProvider {
 
     public boolean isEnabled(Long groupId) {
         return enabledGroups.contains(groupId);
+    }
+
+    public int getMaxUnbanPerDay() {
+        return maxUnbanPerDay;
     }
 }

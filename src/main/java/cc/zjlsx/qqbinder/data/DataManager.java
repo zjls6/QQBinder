@@ -23,9 +23,14 @@ public class DataManager extends BaseYamlConfigProvider {
             int keepSignInDays = playerDataSection.getInt("keep_sign_in_days");
             long lastSignInTime = playerDataSection.getLong("last_sign_in_time");
             long lastUnbanTime = playerDataSection.getLong("last_unban_time");
-            GamePlayer gamePlayer = new GamePlayer(uuid, signInDays, keepSignInDays, lastSignInTime, lastUnbanTime);
+            int unbanToday = playerDataSection.getInt("unban_today");
+            GamePlayer gamePlayer = new GamePlayer(uuid, signInDays, keepSignInDays, lastSignInTime, lastUnbanTime, unbanToday);
             gamePlayers.add(gamePlayer);
         });
+    }
+
+    public void addGamePlayer(GamePlayer gamePlayer) {
+        gamePlayers.add(gamePlayer);
     }
 
     public Optional<GamePlayer> getGamePlayer(UUID uuid) {

@@ -12,8 +12,8 @@ public enum Messages {
     QQ_Bind_Usage("%at_sender% 用法：#qqbind 玩家名"),
     QQ_Bind_Command("&e请在群内输入 &6#qqbind 玩家名 &e来绑定qq"),
     Bind_Success("&a成功绑定QQ&7：&b%qq_code%"),
-    Not_Enough_Level("%at_sender% 您的等级低于 %level% 级，无法绑定"),
-    Player_Not_Online("%at_sender% 该玩家不在线，请上线后再绑定"),
+    Not_Enough_Level("%at_sender% 您的QQ等级低于 %level% 级，无法绑定"),
+    Player_Not_Online("%at_sender% 未找到该玩家，请在主大厅后再绑定"),
     Already_Bind_Player("%at_sender% 错误：这个QQ已经绑定了一个玩家，请先解绑"),
     Already_Bind_QQ("%at_sender% 错误：这个玩家已经绑定了一个QQ，请先解绑"),
     Already_Binding_QQ("%at_sender% 错误：这个玩家正在绑定一个QQ"),
@@ -24,8 +24,9 @@ public enum Messages {
     Bind_Request_Expired("&c该绑定请求已过期"),
     QQ_Not_Bound("%at_sender% 请先使用 #qqbind 玩家名 将该QQ绑定至游戏玩家后再执行此指令！"),
     Player_Not_Baned("%at_sender% 您没有被封禁，不需要解封！"),
-    Already_Self_Unbanned("%at_sender% 您今天已经申请解封过一次了，请明天再试"),
-    Unban_Succeeded("%at_sender% 您已成功解封，请遵守服务器规定，做一名合格的玩家！"),
+    Unban_Time_Used_Up("%at_sender% 每天最多申请解封 %times% 次，请明天再试"),
+    Unban_Succeeded("%at_sender% 您已成功解封，请遵守服务器规定！\n您今天还剩 %times% 次解封机会！"),
+    Last_Unban_Succeeded("%at_sender% 您已成功解封，请遵守服务器规定！\n您今天的解封机会已用完！"),
     Reload_Plugin("&a插件配置重载成功");
 
     private final String configPath;

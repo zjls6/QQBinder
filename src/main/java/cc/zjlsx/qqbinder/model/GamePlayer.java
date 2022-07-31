@@ -1,5 +1,6 @@
 package cc.zjlsx.qqbinder.model;
 
+import cc.zjlsx.qqbinder.data.ConfigManager;
 import cc.zjlsx.qqbinder.data.DataManager;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -12,17 +13,19 @@ public class GamePlayer {
     private int keepSignInDays = 0;
     private long lastSignInTime = 0;
     private long lastUnbanTime = 0;
+    private int unbanToday = 0;
 
     public GamePlayer(UUID uuid) {
         this.uuid = uuid;
     }
 
-    public GamePlayer(String uuid, int signInDays, int keepSignInDays, long lastSignInTime, long lastUnbanTime) {
+    public GamePlayer(String uuid, int signInDays, int keepSignInDays, long lastSignInTime, long lastUnbanTime, int unbanToday) {
         this.uuid = UUID.fromString(uuid);
         this.signInDays = signInDays;
         this.keepSignInDays = keepSignInDays;
         this.lastSignInTime = lastSignInTime;
         this.lastUnbanTime = lastUnbanTime;
+        this.unbanToday = unbanToday;
     }
 
     public void save(DataManager dataManager) {
@@ -35,6 +38,7 @@ public class GamePlayer {
         section.set("keep_sign_in_days", keepSignInDays);
         section.set("last_sign_in_time", lastSignInTime);
         section.set("last_unban_time", lastUnbanTime);
+        section.set("unban_today", unbanToday);
         dataManager.save();
     }
 
@@ -48,5 +52,18 @@ public class GamePlayer {
 
     public void setLastUnbanTime(long lastUnbanTime) {
         this.lastUnbanTime = lastUnbanTime;
+        unbanToday++;
+    }
+
+    public int getUnbanToday() {
+        return unbanToday;
+    }
+
+    public void resetUnbanToday() {
+        this.unbanToday = 0;
+    }
+
+    public boolean canUnbanToday(ConfigManager configManager) {
+        return unbanToday < configManager.getMaxUnbanPerDay();
     }
 }
