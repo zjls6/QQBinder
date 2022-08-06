@@ -1,5 +1,6 @@
 package cc.zjlsx.qqbinder.enums;
 
+import cc.zjlsx.qqbinder.model.GamePlayer;
 import cc.zjlsx.qqbinder.model.QQBindRequest;
 import me.albert.amazingbot.utils.MsgUtil;
 import net.md_5.bungee.api.ChatColor;
@@ -24,9 +25,14 @@ public enum Messages {
     Bind_Request_Expired("&c该绑定请求已过期"),
     QQ_Not_Bound("%at_sender% 请先使用 #qqbind 玩家名 将该QQ绑定至游戏玩家后再执行此指令！"),
     Player_Not_Baned("%at_sender% 您没有被封禁，不需要解封！"),
+    Not_Baned_By_Console("%at_sender% 您是被管理员手动封禁的，不能申请自助解封！"),
+    Permanently_Ban("%at_sender% 您已被永久封禁，不能申请自助解封，如有疑问请联系管理员！"),
     Unban_Time_Used_Up("%at_sender% 每天最多申请解封 %times% 次，请明天再试"),
     Unban_Succeeded("%at_sender% 您已成功解封，请遵守服务器规定！\n您今天还剩 %times% 次解封机会！"),
     Last_Unban_Succeeded("%at_sender% 您已成功解封，请遵守服务器规定！\n您今天的解封机会已用完！"),
+    Already_Signed_Today("%at_sender% 你今天已经签到过了，请明天再试！"),
+    Signed_Successful("%at_sender% 签到成功，您已累计签到 %total% 天！"),
+    Keep_Signed_Successful("%at_sender% 签到成功，您已连续签到 %keep% 天，累计签到 %total% 天！"),
     Reload_Plugin("&a插件配置重载成功");
 
     private final String configPath;
@@ -62,6 +68,13 @@ public enum Messages {
 
     public String getMessage(Long userId) {
         return message.replace("%at_sender%", MsgUtil.getAtMsg(userId.toString()));
+    }
+
+    public static String getSignMessage(Long userId, GamePlayer gamePlayer) {
+        return gamePlayer.getKeepSignInDays() == 0 ?
+                Messages.Signed_Successful.getMessage(userId).replace("%total%", String.valueOf(gamePlayer.getSignInDays())) :
+                Messages.Keep_Signed_Successful.getMessage(userId).replace("%total%", String.valueOf(gamePlayer.getSignInDays()))
+                        .replace("%keep%", String.valueOf(gamePlayer.getKeepSignInDays()));
     }
 
     public void setMessage(String message) {

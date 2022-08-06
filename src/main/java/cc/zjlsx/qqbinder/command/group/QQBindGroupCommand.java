@@ -2,7 +2,7 @@ package cc.zjlsx.qqbinder.command.group;
 
 import cc.zjlsx.qqbinder.Main;
 import cc.zjlsx.qqbinder.command.base.CommandInfo;
-import cc.zjlsx.qqbinder.command.base.GroupCommand;
+import cc.zjlsx.qqbinder.command.group.base.GroupCommand;
 import cc.zjlsx.qqbinder.data.ConfigManager;
 import cc.zjlsx.qqbinder.enums.Messages;
 import cc.zjlsx.qqbinder.manager.QQBindManager;

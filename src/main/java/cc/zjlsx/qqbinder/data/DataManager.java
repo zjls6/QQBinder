@@ -33,7 +33,12 @@ public class DataManager extends BaseYamlConfigProvider {
         gamePlayers.add(gamePlayer);
     }
 
-    public Optional<GamePlayer> getGamePlayer(UUID uuid) {
-        return gamePlayers.stream().filter(gamePlayer -> gamePlayer.getUuid().equals(uuid)).findFirst();
+    public GamePlayer getGamePlayer(UUID uuid){
+        Optional<GamePlayer> optionalGamePlayer = gamePlayers.stream().filter(gamePlayer -> gamePlayer.getUuid().equals(uuid)).findFirst();
+        return optionalGamePlayer.orElseGet(() -> {
+            GamePlayer newGamePlayer = new GamePlayer(uuid);
+            addGamePlayer(newGamePlayer);
+            return newGamePlayer;
+        });
     }
 }

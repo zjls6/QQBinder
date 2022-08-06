@@ -1,7 +1,6 @@
 package cc.zjlsx.qqbinder.command.group.base;
 
 import cc.zjlsx.qqbinder.Main;
-import cc.zjlsx.qqbinder.command.base.GroupCommand;
 import me.albert.amazingbot.events.message.GroupMessageEvent;
 import org.reflections.Reflections;
 

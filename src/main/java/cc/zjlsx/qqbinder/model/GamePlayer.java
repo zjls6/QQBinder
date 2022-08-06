@@ -46,13 +46,38 @@ public class GamePlayer {
         return uuid;
     }
 
+    public int getSignInDays() {
+        return signInDays;
+    }
+
+    public void addSignInDays(long time) {
+        signInDays++;
+        lastSignInTime = time;
+    }
+
+    public long getLastSignInTime() {
+        return lastSignInTime;
+    }
+
+    public int getKeepSignInDays() {
+        return keepSignInDays;
+    }
+
+    public void addKeepSignInDays() {
+        keepSignInDays++;
+    }
+
+    public void resetKeepSignInDays() {
+        keepSignInDays = 0;
+    }
+
     public long getLastUnbanTime() {
         return lastUnbanTime;
     }
 
-    public void setLastUnbanTime(long lastUnbanTime) {
-        this.lastUnbanTime = lastUnbanTime;
+    public void addUnbanToday(long time) {
         unbanToday++;
+        this.lastUnbanTime = time;
     }
 
     public int getUnbanToday() {
