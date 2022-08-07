@@ -8,10 +8,8 @@ import cc.zjlsx.qqbinder.data.DataManager;
 import cc.zjlsx.qqbinder.enums.Messages;
 import cc.zjlsx.qqbinder.model.GamePlayer;
 import cc.zjlsx.qqbinder.util.MessageUtil;
-import com.sun.imageio.plugins.common.BogusColorSpace;
 import me.albert.amazingbot.bot.Bot;
 import me.albert.amazingbot.events.message.GroupMessageEvent;
-import me.albert.amazingbot.utils.MsgUtil;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -48,9 +46,12 @@ public class SignInGroupCommand extends GroupCommand {
         gamePlayer.addSignInDays(System.currentTimeMillis());
 
         String yesterday = sdf.format(System.currentTimeMillis() - 1000 * 60 * 60 * 24);
+//        上一次签到的日期是昨天
         if (sdf.format(date).equals(yesterday)) {
+//            增加连续签到
             gamePlayer.addKeepSignInDays();
         } else {
+//            重置连续签到
             gamePlayer.resetKeepSignInDays();
         }
 
