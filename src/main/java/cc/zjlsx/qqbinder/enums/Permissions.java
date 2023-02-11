@@ -2,7 +2,7 @@ package cc.zjlsx.qqbinder.enums;
 
 public enum Permissions {
 
-    Admin("advancedvote.admin"),
+    Admin("qqbinder.admin"),
     None("");
 
     private final String permission;

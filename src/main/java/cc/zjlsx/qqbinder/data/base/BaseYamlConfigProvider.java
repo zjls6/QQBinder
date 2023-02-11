@@ -1,8 +1,8 @@
 package cc.zjlsx.qqbinder.data.base;
 
-import cc.zjlsx.qqbinder.Main;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 import java.io.IOException;
@@ -10,10 +10,9 @@ import java.io.IOException;
 public class BaseYamlConfigProvider implements BaseYamlConfig {
     public FileConfiguration config;
     private File configFile;
-    private Main plugin;
+    private JavaPlugin plugin;
 
-    @Override
-    public void init(Main plugin, String name) {
+    public void init(JavaPlugin plugin, String name) {
         this.plugin = plugin;
         String fileName = name + ".yml";
         configFile = new File(plugin.getDataFolder(), fileName);
@@ -43,7 +42,7 @@ public class BaseYamlConfigProvider implements BaseYamlConfig {
         reload();
     }
 
-    public Main getPlugin() {
+    public JavaPlugin getPlugin() {
         return plugin;
     }
 }

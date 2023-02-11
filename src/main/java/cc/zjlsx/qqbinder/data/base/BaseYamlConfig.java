@@ -1,9 +1,9 @@
 package cc.zjlsx.qqbinder.data.base;
 
-import cc.zjlsx.qqbinder.Main;
+import org.bukkit.plugin.java.JavaPlugin;
 
 public interface BaseYamlConfig {
-    void init(Main plugin, String name);
+    void init(JavaPlugin plugin, String name);
 
     void load();
 
